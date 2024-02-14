@@ -1,0 +1,284 @@
+html {
+    background: white;
+    min-height: 100%;
+    background-color: white;
+}
+
+body {
+    background-color: transparent;
+    min-height: 100% !important;
+}
+
+.divLogotipo {
+    text-align: left;
+}
+
+.divLogotipo img {
+    height: 4em;
+}
+
+.divLog {
+    text-align: right;
+}
+
+.divLog img {
+    height: 2.5em;
+}
+
+.divTituloApp {
+    text-align: center;
+    font-size: 2.5em;
+}
+
+#secEncabezadoPagina {
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#cabeceraApartados {
+    background-color: #4CAF50;
+}
+
+#miNombre {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+#logoLogin {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+#logOut {
+    background: linear-gradient(180deg, #689F38 0%, #4CAF50 100%);
+    border-radius: 10px;
+}
+
+#secMenuPagina {
+    padding-left: unset;
+    padding-right: unset;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    font-size: 20px;
+}
+
+#bloqueContenido {
+    background: transparent;
+    background-color: white;
+    padding-bottom: 45px;
+
+}
+
+#secContenidoPagina {
+    background: transparent;
+    background-color: white;
+}
+
+#bloqueTxt {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+#txtBusqueda {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: large;
+}
+
+#formularioBuscar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Ajusta según sea necesario para la separación entre formularios */
+}
+
+#formularioBuscar label {
+    margin-right: 10px; /* Ajusta según sea necesario para la separación entre etiquetas e inputs/selects */
+}
+
+
+#formularioBuscar input,
+#formularioBuscar select,
+#formularioBuscar button {
+    margin-bottom: 0; /* Evitar el espacio adicional debajo de los elementos */
+}
+
+
+#btnBuscar{
+
+    margin-right: 75px;
+    margin-left: 75px;
+
+}
+
+input {
+    background: white;
+    border: solid #45a049;
+}
+
+#btnBuscar {
+    background: linear-gradient(180deg, #689F38 0%, #4CAF50 100%);
+    border: none;
+}
+
+#btnAñadir {
+    background: linear-gradient(180deg, #689F38 0%, #4CAF50 100%);
+    border: none;
+    float: right; /* Agregado para alinear a la derecha */
+    margin-right: 10px; /* Opcional: Agrega un pequeño margen derecho */
+}
+
+#tablaListado {
+    width: 100%;
+    
+}
+
+#tablaListado th,
+#tablaListado td {
+    border-top: 1px solid #4CAF50;
+    border-bottom: 1px solid #4CAF50;
+    text-align: left;
+}
+
+
+/* Personalización para colores de Bootstrap */
+.bg-success {
+    background-color: white !important;
+}
+
+.bg-info {
+    background-color: white !important;
+}
+
+.table-dark th, .table-dark td {
+    background-color: white !important;
+    color: black;
+}
+
+.table-dark tbody tr:nth-child(odd) td {
+    background-color: white !important;
+}
+
+.table-dark tbody tr:hover td {
+    background-color: white !important;
+}
+
+#capaResultadosBusqueda {
+    width: 100% !important;
+    overflow: auto;
+    margin-top: 10px;
+}
+
+select {
+    background: linear-gradient(180deg, #689F38 0%, #4CAF50 100%);
+    border: none;
+}
+
+#formulario_añadir {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 20px;
+}
+
+#boton_agregar {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#boton_agregar:hover {
+    background-color: #45a049;
+}
+.sexo{
+    margin-left: 100px;
+}
+#form_sexo{
+    color: white !important;
+    background-color: #4CAF50;
+    
+}
+
+#body_formulario{
+    background-color: #4CAF50;
+}
+
+.card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.titulo-verde {
+    background-color: #4CAF50 !important; 
+    color: white; 
+    padding: 10px; 
+    text-align: center;
+}
+
+.cantidad{
+    margin-right: 100px;
+    margin-left: 100px;
+    
+}
+.actividad{
+    
+    margin-left: 100px;
+}
+
+#paginador {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.pagina {
+    display: inline-block;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pagina:hover {
+    background-color: #45a049;
+}
+
+.num-pagina {
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+    margin: 0 10px;
+    border: 1px solid #4CAF50;
+    border-radius: 5px;
+}
+
+.ir-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.ir-btn:hover {
+    background-color: #45a049;
+}
+
+
+
+
+
