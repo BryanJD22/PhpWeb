@@ -75,7 +75,7 @@ class M_Usuarios extends Modelo
         $b_texto = '';
         $usuario = '';
         $pass = '';
-        $id_Usuario = ''; // Added to declare $id_Usuario variable
+        $id_Usuario = ''; 
         $cantidad='';
         $pagina='0';
         $paginas='0';
@@ -84,8 +84,8 @@ class M_Usuarios extends Modelo
         $SQL = "SELECT * FROM usuarios WHERE 1=1";
     
         if ($id_Usuario != '') {
-            // If an ID is provided, search for the user by ID
-            $id_Usuario = intval($id_Usuario); // Ensure ID is an integer to prevent SQL injection
+            
+            $id_Usuario = intval($id_Usuario); 
             $SQL .= " AND id_Usuario = $id_Usuario";
         } else {
             if ($usuario != '' && $pass != '') {

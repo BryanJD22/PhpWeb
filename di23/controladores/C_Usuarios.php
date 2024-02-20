@@ -17,6 +17,7 @@
             if (!empty($usuario)) {
                 $valido='S';
                 $_SESSION['usuario'] = $usuario[0]['login'];
+                
             }
             return $valido;
         }

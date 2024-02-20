@@ -20,6 +20,16 @@ class M_Menus extends Modelo
         return $menus;
     }
 
+    public function buscarPermisos($nombre_usuario){
+        $SQL = "SELECT PE.id_permiso, pe.nombre  FROM permisosusuarios pu 
+        INNER JOIN permisos pe ON pu.id_permiso = pe.id_permiso 
+        INNER JOIN usuarios us ON pu.id_usuario = us.id_Usuario 
+        WHERE us.login = '$nombre_usuario';";
+        $permisos = $this->DAO->consultar($SQL);
+        return $permisos;
+        
+    }
+    
 
 }
 ?>
