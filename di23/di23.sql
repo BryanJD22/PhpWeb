@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-02-2024 a las 12:05:51
+-- Tiempo de generación: 22-02-2024 a las 12:06:56
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -83,6 +83,24 @@ CREATE TABLE `permisosusuarios` (
   `id_permiso` int(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `permisosusuarios`
+--
+
+INSERT INTO `permisosusuarios` (`id_usuario`, `id_permiso`) VALUES
+(502, 1),
+(502, 2),
+(502, 3),
+(503, 1),
+(503, 2),
+(503, 3),
+(499, 1),
+(500, 1),
+(500, 2),
+(500, 3),
+(501, 1),
+(501, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -117,18 +135,6 @@ CREATE TABLE `rolespermisos` (
   `id_permiso` int(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
---
--- Volcado de datos para la tabla `rolespermisos`
---
-
-INSERT INTO `rolespermisos` (`id_rol`, `id_permiso`) VALUES
-(1, 1),
-(1, 2),
-(1, 3),
-(2, 1),
-(2, 2),
-(3, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -139,6 +145,18 @@ CREATE TABLE `rolesusuarios` (
   `id_rol` int(3) DEFAULT NULL,
   `id_Usuario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `rolesusuarios`
+--
+
+INSERT INTO `rolesusuarios` (`id_rol`, `id_Usuario`) VALUES
+(1, 502),
+(2, 503),
+(3, 498),
+(4, 499),
+(5, 500),
+(6, 501);
 
 -- --------------------------------------------------------
 
@@ -291,7 +309,13 @@ INSERT INTO `usuarios` (`id_Usuario`, `nombre`, `apellido_1`, `apellido_2`, `sex
 (489, 'Thomas ', 'Smith', '', 'H', '2020-02-15', 'Smith@2si2023.es', '64489489', 'Smith', '202cb962ac59075b964b07152d234b70', 'S'),
 (495, 'Valarie', 'Franco', '', 'M', '2020-02-15', 'Franco2@2si2023.es', '64495495', 'Franco2', '202cb962ac59075b964b07152d234b70', 'S'),
 (496, 'Tony', 'Snowden', '', 'H', '2020-02-15', 'Snowden@2si2023.es', '64496496', 'Snowden', '202cb962ac59075b964b07152d234b70', 'N'),
-(497, 'ss', 'ss', '', 'H', '2022-12-07', 'asfsdf@sfsd.es', '', 'javier22', '25d55ad283aa400af464c76d713c07ad', 'S');
+(497, 'ss', 'ss', '', 'H', '2022-12-07', 'asfsdf@sfsd.es', '', 'javier22', '25d55ad283aa400af464c76d713c07ad', 'S'),
+(498, 'administrador', 'administrador', 'administrador', 'H', '2024-02-22', 'administrador@gmail.com', '1', 'administrador', 'd41d8cd98f00b204e9800998ecf8427e', 'S'),
+(499, 'invitado', 'invitado', 'invitado', 'H', '2024-02-22', 'invitado@gmail.com', '1', 'invitado', 'd41d8cd98f00b204e9800998ecf8427e', 'S'),
+(500, 'jefe', 'jefe', 'jefe', 'H', '2024-02-22', 'jefe@gmail.com', '1', 'jefe', 'd41d8cd98f00b204e9800998ecf8427e', 'S'),
+(501, 'usuario', 'usuario', 'usuario', 'H', '2024-02-22', 'usuario@gmail.com', '1', 'usuario', 'd41d8cd98f00b204e9800998ecf8427e', 'S'),
+(502, 'Israel', 'Colta', 'Bujalance', 'H', '2024-02-22', 'israelcolta@gmail.com', '1', 'isra', 'd41d8cd98f00b204e9800998ecf8427e', 'S'),
+(503, 'Bryan', 'Davila', 'Cianca', 'H', '2024-02-22', 'bryandavila@gmail.com', '1', 'bj', 'd41d8cd98f00b204e9800998ecf8427e', 'S');
 
 --
 -- Índices para tablas volcadas
@@ -358,7 +382,7 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=498;
+  MODIFY `id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=504;
 
 --
 -- Restricciones para tablas volcadas
