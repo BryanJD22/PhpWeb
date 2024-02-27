@@ -1,7 +1,7 @@
 <?php
-echo '<div id="bloqueTxt"><a id="txtBusqueda">Busqueda de Usuarios</a></div>';
+    echo '<div id="bloqueTxt"><a id="txtBusqueda">Busqueda de Usuarios</a></div>';
 
-    
+    json_encode($_SESSION['permisos']);
 
 ?>
 <form id="formularioBuscar" name="formularioBuscar" onkeydown="return event.key != 'Enter';">

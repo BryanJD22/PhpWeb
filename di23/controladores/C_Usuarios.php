@@ -3,6 +3,7 @@
     require_once 'controladores/Controlador.php';
     require_once 'vistas/Vista.php';
     require_once 'modelos/M_Usuarios.php';
+    require_once 'modelos/M_Menus.php';
 
     class C_Usuarios extends Controlador{
         private $modelo;
@@ -12,16 +13,20 @@
         }
 
         public function validarUsuario($filtros){
-            $valido='N';
-            $usuario=$this->modelo->buscarUsuarios($filtros);
+    
+            $valido = 'N';
+            $usuario = $this->modelo->buscarUsuarios($filtros);
             if (!empty($usuario)) {
-                $valido='S';
+                $modelo_menu = new M_Menus();
+                $valido = 'S';
                 $_SESSION['usuario'] = $usuario[0]['login'];
-                
+                $_SESSION['permisos'] = $modelo_menu->buscarPermisos($usuario[0]['login']);
+
+                echo $usuario[0]['login'];
             }
             return $valido;
         }
-
+        
         public function getVistaUsuarios(){
             Vista::render('vistas/Usuarios/V_Usuarios.php');
         }

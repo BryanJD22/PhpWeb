@@ -16,6 +16,8 @@ if ($usuario == '' || $pass == '') {
         'usuario' => $usuario,
         'pass' => $pass
     ));
+
+
     if ($resultado == 'S') {
         header('Location: index.php');
     } else {

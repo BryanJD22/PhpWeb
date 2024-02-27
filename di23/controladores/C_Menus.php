@@ -19,6 +19,13 @@
                             array('menus' => $menus));
         }
 
+        public function getpermisos($nombre_usuario){ 
+            $menus=$this->modelo->buscarPermisos($nombre_usuario);
+
+            Vista::render('vistas/Menus/V_Menus.php', 
+                            array('menus' => $menus));
+        }
+
 
     }
 ?>
