@@ -32,7 +32,6 @@ echo '<span class="navbar-toggler-icon"></span>';
 echo '</button>';
 echo '<div class="collapse navbar-collapse" id="navbarsExample04">';
 echo '<ul class="navbar-nav me-auto mb-2 mb-md-0">';
-<<<<<<<<<<<<<<  ✨ Codeium Command ⭐ >>>>>>>>>>>>>>>>
 foreach ($padres as $padre) {
     // Verificar permisos para mostrar el menú CRUD
     if ($padre['titulo'] == 'CRUDs' && !tienePermiso('ver_cruds')) {
@@ -73,8 +72,8 @@ function tienePermiso($permiso) {
     // Aquí se debe implementar la lógica de verificación de permisos
     // Por ejemplo, consultar a la sesión del usuario, base de datos, etc.
     // Retorna true si el usuario tiene el permiso, false en caso contrario
+    
 }
-<<<<<<<  2aee5951-5a74-4d67-b3cf-a3d0d3ea6474  >>>>>>>
 foreach($padres as $padre){
     if(empty($padre['hijos'])){
         echo '<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">';
