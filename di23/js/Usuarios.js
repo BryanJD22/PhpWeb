@@ -129,4 +129,10 @@ function getParams(id){
         .catch(err => {
             console.log("Error al realizar la petición", err.message);
         });
+
+
+}
+
+function visualizarUsuarios(){
+    alert("No tienes permisos para visualizar los usuarios.")
 }

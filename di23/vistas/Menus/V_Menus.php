@@ -1,8 +1,6 @@
 <?php
 
-    $menus = $datos['menus'];
-    $_SESSION['permisos'];
-    $permisos = $_SESSION['permisos'];	
+
 ?>
 
 

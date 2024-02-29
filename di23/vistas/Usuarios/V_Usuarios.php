@@ -1,7 +1,19 @@
 <?php
     echo '<div id="bloqueTxt"><a id="txtBusqueda">Busqueda de Usuarios</a></div>';
+    $visualizar = 0;
+    $editar = 0;
+    if(isset($_SESSION['permisos'])){
+        $permisos = $_SESSION['permisos'];
+        foreach($permisos as $permiso){
+            if($permiso['id_permiso'] == 1){
+                $visualizar = 1;
+            }elseif ($permiso['id_permiso'] == 2){
+                $editar = 1;
+            }
 
-    json_encode($_SESSION['permisos']);
+        }
+    }
+
 
 ?>
 <form id="formularioBuscar" name="formularioBuscar" onkeydown="return event.key != 'Enter';">
@@ -30,9 +42,14 @@
             <option value="30">30</option>
         </select>
 </label>
-
-
-<button type="button" class="btn btn-success"  id="btnBuscar" onclick="buscarUsuarios()">Buscar</button>
+<?php
+if($visualizar== 1){
+    echo '<button type="button" class="btn btn-success"  id="btnBuscar" onclick="buscarUsuarios()">Buscar</button>';
+}else{
+    echo '<button type="button" class="btn btn-success"  id="btnBuscar" onclick="visualizarUsuarios()">Buscar</button>';
+}
+?>
+<!-- <button type="button" class="btn btn-success"  id="btnBuscar" onclick="visualizarUsuarios()">Buscar</button>  -->
 
 <button type="button" class="btn btn-success" id="btnAñadir" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaAñadir')">Añadir</button>
 

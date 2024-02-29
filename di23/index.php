@@ -5,7 +5,7 @@
         //header('Location: login.php');
     }
     // https://es.cooltext.com/
-    print_r($_SESSION['permisos']);
+
 
 ?>
 <!DOCTYPE html>
