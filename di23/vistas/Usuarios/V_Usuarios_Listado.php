@@ -10,6 +10,17 @@
 
 
 <?php
+   
+   $editar = 0;
+   if(isset($_SESSION['permisos'])){
+       $permisos = $_SESSION['permisos'];
+       foreach($permisos as $permiso){
+           if($permiso['id_permiso'] == 2){
+                $editar = 1;
+           }
+
+       }
+    }
     $usuarios= $datos['usuarios'];
 
     array_pop($usuarios);
@@ -24,8 +35,11 @@
         echo '<th>Sexo</th>';
         echo '<th>Telefono</th>';
         echo '<th>Actividad</th>';
-        echo '<th>Editar</th>'; 
-        echo '<th>Eliminar</th>';
+        if ($editar == 1) {
+            echo '<th>Editar</th>'; 
+            echo '<th>Eliminar</th>';
+        }
+        
         echo '</tr>';
         echo '</thead>';
         echo '<tbody>';
@@ -59,8 +73,13 @@
             echo '<td>' . returnGenero($fila) . '</td>';
             echo '<td>' . $fila['movil'] . '</td>';
             echo '<td>' . returnActivos($fila) . '</td>';
-            echo '<td><button class="btn btn-success" onclick=getParams('. $fila['id_Usuario'].');getVistaMenuSeleccionado('.'Usuarios'.','.'getVistaEditar'.')>Editar</button></td>';
-            echo '<td><button class="btn btn-success" onclick="eliminarUsuario(' . $fila['id_Usuario'] . ')">Eliminar</button></td>';
+            if ($editar == 1) {
+                echo '<td><button class="btn btn-success" onclick=getParams('. $fila['id_Usuario'].');getVistaMenuSeleccionado('.'Usuarios'.','.'getVistaEditar'.')>Editar</button></td>';
+                echo '<td><button class="btn btn-success" onclick="eliminarUsuario(' . $fila['id_Usuario'] . ')">Eliminar</button></td>';
+            }// }else if($editar == 0){
+            //     echo '<td><button class="btn btn-success" onclick="visualizarEditar()">Editar</button></td>';
+            // }
+            
             echo '</tr>';
         }
 

@@ -136,3 +136,11 @@ function getParams(id){
 function visualizarUsuarios(){
     alert("No tienes permisos para visualizar los usuarios.")
 }
+
+function visualizarAñadir(){
+    alert("No tienes permisos para añadir los usuarios.")
+}
+
+function visualizarEditar(){
+    alert("No tienes permisos para editar los usuarios.")
+}

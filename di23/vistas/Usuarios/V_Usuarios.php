@@ -2,6 +2,7 @@
     echo '<div id="bloqueTxt"><a id="txtBusqueda">Busqueda de Usuarios</a></div>';
     $visualizar = 0;
     $editar = 0;
+    $crear = 0;
     if(isset($_SESSION['permisos'])){
         $permisos = $_SESSION['permisos'];
         foreach($permisos as $permiso){
@@ -9,6 +10,8 @@
                 $visualizar = 1;
             }elseif ($permiso['id_permiso'] == 2){
                 $editar = 1;
+            }elseif ($permiso['id_permiso'] == 3){
+                $crear = 1;
             }
 
         }
@@ -48,10 +51,18 @@ if($visualizar== 1){
 }else{
     echo '<button type="button" class="btn btn-success"  id="btnBuscar" onclick="visualizarUsuarios()">Buscar</button>';
 }
+
+if($crear == 1){
+    echo '<button type="button" class="btn btn-success" id="btnAñadir" onclick="getVistaMenuSeleccionado(\'Usuarios\', \'getVistaAñadir\')">Añadir</button>';
+}else{
+    echo '<button type="button" class="btn btn-success" id="btnAñadir" onclick="visualizarAñadir()">Añadir</button>';
+}
+
 ?>
 <!-- <button type="button" class="btn btn-success"  id="btnBuscar" onclick="visualizarUsuarios()">Buscar</button>  -->
 
-<button type="button" class="btn btn-success" id="btnAñadir" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaAñadir')">Añadir</button>
+
+<!-- <button type="button" class="btn btn-success" id="btnAñadir" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaAñadir')">Añadir</button> -->
 
 
 

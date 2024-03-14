@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-02-2024 a las 12:06:56
+-- Tiempo de generación: 14-03-2024 a las 10:45:33
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -49,7 +49,8 @@ INSERT INTO `menus` (`id_menu`, `posicion`, `titulo`, `id_menu_padre`, `accion`,
 (4, 4, 'Cruds', NULL, NULL, 1),
 (5, 1, 'Usuarios', 4, 'getVistaMenuSeleccionado(\'Usuarios\', \'getVistaUsuarios\')', 1),
 (6, 2, 'Something Else here', 4, NULL, 1),
-(7, 3, 'Something Else here', 4, NULL, 1);
+(7, 3, 'Something Else here', 4, NULL, 1),
+(8, 5, 'Mtto. Menu y permisos', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -313,9 +314,9 @@ INSERT INTO `usuarios` (`id_Usuario`, `nombre`, `apellido_1`, `apellido_2`, `sex
 (498, 'administrador', 'administrador', 'administrador', 'H', '2024-02-22', 'administrador@gmail.com', '1', 'administrador', 'd41d8cd98f00b204e9800998ecf8427e', 'S'),
 (499, 'invitado', 'invitado', 'invitado', 'H', '2024-02-22', 'invitado@gmail.com', '1', 'invitado', 'd41d8cd98f00b204e9800998ecf8427e', 'S'),
 (500, 'jefe', 'jefe', 'jefe', 'H', '2024-02-22', 'jefe@gmail.com', '1', 'jefe', 'd41d8cd98f00b204e9800998ecf8427e', 'S'),
-(501, 'usuario', 'usuario', 'usuario', 'H', '2024-02-22', 'usuario@gmail.com', '1', 'usuario', 'd41d8cd98f00b204e9800998ecf8427e', 'S'),
+(501, 'usuario', 'usuario', 'usuario', 'H', '2024-02-22', 'usuario@gmail.com', '1', 'usuario', 'f8032d5cae3de20fcec887f395ec9a6a', 'S'),
 (502, 'Israel', 'Colta', 'Bujalance', 'H', '2024-02-22', 'israelcolta@gmail.com', '1', 'isra', 'd41d8cd98f00b204e9800998ecf8427e', 'S'),
-(503, 'Bryan', 'Davila', 'Cianca', 'H', '2024-02-22', 'bryandavila@gmail.com', '1', 'bj', 'd41d8cd98f00b204e9800998ecf8427e', 'S');
+(503, 'Bryan', 'Davila', 'Cianca', 'H', '2024-02-22', 'bryandavila@gmail.com', '1', 'bj', '39b9df3a0fb3356d11a63e22260e96ab', 'S');
 
 --
 -- Índices para tablas volcadas
@@ -376,7 +377,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
