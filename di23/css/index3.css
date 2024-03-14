@@ -282,3 +282,22 @@ select {
 
 
 
+#btnCrearPadre {
+    background: linear-gradient(180deg, #689F38 0%, #4CAF50 100%);
+    border: none;
+}
+
+#btnBuscarMenus {
+    background: linear-gradient(180deg, #689F38 0%, #4CAF50 100%);
+    border: none;
+}
+
+#botonesMenu {
+    display: flex;
+    margin-left: 20px;
+}
+
+
+#divmenus {
+    
+}

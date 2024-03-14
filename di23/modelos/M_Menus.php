@@ -30,6 +30,20 @@ class M_Menus extends Modelo
         
     }
     
-
+    public function buscarMenuMtto()
+    {
+      $SQL = "SELECT * FROM menus WHERE 1=1 ORDER BY id_menu_padre ASC, posicion ASC";
+      $menus = $this->DAO->consultar($SQL);
+      foreach ($menus as $menu) {
+        if ($menu['id_menu_padre'] == 0) {
+          $menuBueno[$menu['id_menu']] = $menu;
+  
+        } else {
+          $menuBueno[$menu['id_menu_padre']]['hijos'][] = $menu;
+  
+        }
+      }
+      return $menuBueno;
+    }
 }
 ?>

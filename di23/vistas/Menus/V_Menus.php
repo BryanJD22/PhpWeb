@@ -33,7 +33,7 @@ echo '<ul class="navbar-nav me-auto mb-2 mb-md-0">';
 
 
 
-foreach($padres as $padre){
+foreach($padres as $padre   ){
     if(empty($padre['hijos'])){
         echo '<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">';
         echo $padre['titulo'];

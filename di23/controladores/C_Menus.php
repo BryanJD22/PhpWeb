@@ -25,7 +25,33 @@
             Vista::render('vistas/Menus/V_Menus.php', 
                             array('permisos' => $permisos));
         }
+        
+        // public function getVistaMtto($parameters = array())
+        // {
+        //     $menus = $this->modelo->buscarMenu($parameters);
+            
+        //     Vista::render('vistas\Menus\V_MttoMP.php');
+           
+        // }
+                
+        public function getVistaMtto()
+        {
+            //$menus = $this->modelo->buscarMenu($parameters);
+            
+            Vista::render('vistas\Menus\V_MttoMP.php');
+           
+        }
 
+        public function busquedaMenus($parameters = array())
+        {
+            $menus = $this->modelo->buscarMenuMtto($parameters);
+            // Vista::render('vistas\Menus\V_Menu.php', array('menuBueno'=>$menus));
+            // Vista::render('vistas\Menus\V_MttoMenu.php');
+            Vista::render(
+                'vistas\Menus\V_Resultadosmtto.php',
+                array('menus2' => $menus)
+            );
+        }
 
     }
 ?>
