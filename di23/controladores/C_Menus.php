@@ -63,5 +63,14 @@
 
         }
 
+        public function crearMenu($parameters = array()){
+            $menus = $this->modelo->crearMenu($parameters);
+            
+            Vista::render(
+                'vistas\Menus\V_ResultadosMtto.php',
+                array('menus2' => $menus)
+            );
+
+        }
     }
 ?>

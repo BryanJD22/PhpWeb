@@ -297,7 +297,22 @@ select {
     margin-left: 20px;
 }
 
+#bloqueFormMttoMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Ajusta la altura según sea necesario */
+}
 
-#divmenus {
-    
+#camposCrearMenu {
+    width: 400px; /* Ajusta el ancho del formulario según sea necesario */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+#camposCrearMenu label,
+#camposCrearMenu input[type="text"],
+#camposCrearMenu button {
+    margin-bottom: 10px; /* Espacio entre elementos */
 }

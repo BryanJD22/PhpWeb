@@ -54,5 +54,57 @@ class M_Menus extends Modelo
       return $menus;
   
     }
+
+    // public function crearMenu($parameters = array())
+    // {
+    //   $nombre_menu = "";
+    //   $id_padre = "";
+    //   $accion = "";
+    //   $orden = "";
+  
+    //   extract($parameters);
+    //   echo $nombre_menu . " - " . $id_padre . " - " . $accion . " - " . $orden;
+
+    //   $sqlPosicion = "SELECT MAX(posicion) AS ultima_posicion FROM menus where id_menu_padre = $id_padre;"
+  
+    //   //condicion compruebe que no existe un menu con el mismo nombre
+    //   $sqlVerificarMenu = "SELECT COUNT(*) AS total FROM Menu WHERE NOMBRE_MENU = '$nombre_menu';";
+    //   $resultadoVerificarMenu = $this->DAO->consultar($sqlVerificarMenu);
+    //   $filaNombre = $resultadoVerificarMenu[0]['total'];
+    //   if ($filaNombre > 0) {
+    //     echo "Error: Ya existe un menu con el mismo nombre.";
+    //     return;
+    //   }
+    //   //al no ser auto increment lo hago a mano para que no de error
+    //   // $SQLid_menu = "SELECT COUNT(*) AS num_menus FROM Menu";
+    //   // $num_menus = $this->DAO->consultar($SQLid_menu);
+    //   // $id_menu = $num_menus[0]['num_menus'];
+    //   // $id_menu = $id_menu + 1;
+  
+    //   // //GESTIONO AL PADRE
+    //   // if ($id_padre == 0) {
+    //   //   $id_padre = "";
+  
+    //   // }
+  
+    //   // Incrementar el orden 
+    //   $ordenIncrementado = $orden + 1;
+  
+    //   //comprobacion nombre
+    //   if ($nombre_menu != "") {
+    //     // $nombre_menu = addslashes($nombre_menu);
+    //     // $id_padre = addslashes($id_padre);
+    //     // $accion = addslashes($accion);
+  
+    //     $SQL = "INSERT INTO Menu (id_menu, nombre_menu, id_padre, accion, orden) VALUES ('$id_menu', '$nombre_menu', '$id_padre', '$accion', '$ordenIncrementado');";
+    //     echo $SQL;
+    //     $menus = $this->DAO->insertar($SQL);
+    //     $sqlActualizarOrden = "UPDATE Menu SET ORDEN = ORDEN + 1 WHERE ORDEN >= '$ordenIncrementado'";
+    //     $this->DAO->actualizar($sqlActualizarOrden);
+    //     return $menus;
+    //   } else {
+    //     echo "Error: EL CAMPO NOMBRE";
+    //   }
+    // }
 }
 ?>
