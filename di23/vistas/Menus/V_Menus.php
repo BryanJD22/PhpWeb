@@ -6,21 +6,27 @@
 <?php
     //Obtenemos los datos del menú.
     $filasMenu=$datos['menus'];
+    
     //Creamos el array padre que
     $padres = array();
-    foreach($filasMenu as $fila){
-        if($fila['id_menu_padre'] == NULL){
-            array_push($padres, $fila);
-        }
-        if($fila['id_menu_padre'] != NULL) {
-            foreach($filasMenu as $padre){
-                if($padre['id_menu']==$fila['id_menu_padre']){
-                    $padre['hijos'] = $fila;
-                    $padres[$fila['id_menu_padre']-1]['hijos'][] = $fila;
-                }
+    foreach ($filasMenu as $fila) {
+        if ($fila['id_menu_padre'] === NULL || $fila['id_menu_padre'] === '') {
+            $padres[$fila['id_menu']] = $fila;
+        } else {
+            $padreId = $fila['id_menu_padre'];
+            if (!isset($padres[$padreId])) {
+                $padres[$padreId] = array(
+                    'titulo' => '',
+                    'hijos' => array()
+                );
             }
+            if (!isset($padres[$padreId]['hijos'])) {
+                $padres[$padreId]['hijos'] = array();
+            }
+            $padres[$padreId]['hijos'][] = $fila;
         }
     }
+    
     //Imprimimos el array para comprobar que los datos han sido añadidos correctamente.
     //foreach($padres as $padre){echo print_r($padre);echo '<br>';}
 echo '<nav class="navbar navbar-expand-sm navbar-light" id="cabeceraApartados" aria-label="Fourth navbar example">';
@@ -33,7 +39,8 @@ echo '<ul class="navbar-nav me-auto mb-2 mb-md-0">';
 
 
 
-foreach($padres as $padre   ){
+foreach($padres as $padre){
+    
     if(empty($padre['hijos'])){
         echo '<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">';
         echo $padre['titulo'];

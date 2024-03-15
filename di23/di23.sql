@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-03-2024 a las 10:45:33
+-- Tiempo de generación: 15-03-2024 a las 12:48:37
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -44,13 +44,10 @@ CREATE TABLE `menus` (
 
 INSERT INTO `menus` (`id_menu`, `posicion`, `titulo`, `id_menu_padre`, `accion`, `privado`) VALUES
 (1, 1, 'Home', NULL, NULL, 1),
-(2, 2, 'Link', NULL, NULL, 0),
-(3, 3, 'Disable', NULL, NULL, 1),
 (4, 4, 'Cruds', NULL, NULL, 1),
 (5, 1, 'Usuarios', 4, 'getVistaMenuSeleccionado(\'Usuarios\', \'getVistaUsuarios\')', 1),
-(6, 2, 'Something Else here', 4, NULL, 1),
-(7, 3, 'Something Else here', 4, NULL, 1),
-(8, 5, 'Mtto. Menu y permisos', NULL, NULL, 1);
+(8, 5, 'Mantenimiento', NULL, NULL, 1),
+(9, 1, 'Mtto Menus y Permisos', 8, 'getVistaMenuSeleccionado(\'Menus\', \'getVistaMtto\')', 1);
 
 -- --------------------------------------------------------
 
@@ -377,7 +374,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -393,28 +390,28 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `permisos`
 --
 ALTER TABLE `permisos`
-  ADD CONSTRAINT `fk_permisos_menus` FOREIGN KEY (`id_menu`) REFERENCES `menus` (`id_menu`);
+  ADD CONSTRAINT `permisos_ibfk_1` FOREIGN KEY (`id_menu`) REFERENCES `menus` (`id_menu`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `permisosusuarios`
 --
 ALTER TABLE `permisosusuarios`
-  ADD CONSTRAINT `permisosusuarios_ibfk_1` FOREIGN KEY (`id_permiso`) REFERENCES `permisos` (`id_permiso`),
-  ADD CONSTRAINT `permisosusuarios_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_Usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `permisosusuarios_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_Usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `permisosusuarios_ibfk_2` FOREIGN KEY (`id_permiso`) REFERENCES `permisos` (`id_permiso`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `rolespermisos`
 --
 ALTER TABLE `rolespermisos`
-  ADD CONSTRAINT `rolespermisos_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `rolespermisos_ibfk_2` FOREIGN KEY (`id_permiso`) REFERENCES `permisos` (`id_permiso`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `rolespermisos_ibfk_1` FOREIGN KEY (`id_permiso`) REFERENCES `permisos` (`id_permiso`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `rolespermisos_ibfk_2` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `rolesusuarios`
 --
 ALTER TABLE `rolesusuarios`
-  ADD CONSTRAINT `rolesusuarios_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `rolesusuarios_ibfk_2` FOREIGN KEY (`id_Usuario`) REFERENCES `usuarios` (`id_Usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `rolesusuarios_ibfk_1` FOREIGN KEY (`id_Usuario`) REFERENCES `usuarios` (`id_Usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `rolesusuarios_ibfk_2` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

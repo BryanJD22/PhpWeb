@@ -45,5 +45,14 @@ class M_Menus extends Modelo
       }
       return $menuBueno;
     }
+
+    public function eliminarMenu($parameters = array()){
+      $id_menu = "";
+      extract($parameters);
+      $SQL = "DELETE FROM menus WHERE ID_MENU = '$id_menu';";
+      $menus = $this->DAO->borrar($SQL);
+      return $menus;
+  
+    }
 }
 ?>

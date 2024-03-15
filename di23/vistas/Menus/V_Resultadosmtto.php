@@ -17,11 +17,11 @@ function generarHTML($menu, $nivel = 0)
         style="margin: 5px;" onclick="guardarIdMenu(' . $menu['id_menu'] . ');">Actualizar Menú</button>';
 
         echo '<button class="btn btn-success" type="button" name="btnEliminarMenus" id="btnEliminarMenus" 
-        style="margin: 5px;" onclick="guardarIdMenu(' . $menu['id_menu'] . ')">Eliminar Menú</button>';
+        style="margin: 5px;" onclick="eliminarMenu(' . $menu['id_menu'] . ')">Eliminar Menú</button>';
 
         echo '<br>';
         echo '<button class="btn btn-success" type="button" name="btnCrearMenus" id="btnCrearMenus" 
-            style="margin: 5px;" onclick="guardarIdMenuPadre(' . $menu['id_menu'] . '); validarMenu();">Crear Hijo</button>';
+            style="margin: 5px;" onclick="guardarIdMenuPadre(' . $menu['id_menu'] . ');guardarOrden('.$menu['id_menu'].'); mostrarCamposCreateMenu();">Crear Hijo</button>';
     
     echo '</div>';
     

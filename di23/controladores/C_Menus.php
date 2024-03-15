@@ -53,5 +53,15 @@
             );
         }
 
+        public function eliminarMenu($parameters = array()){
+            $menus = $this->modelo->eliminarMenu($parameters);
+            
+            Vista::render(
+                'vistas\Menus\V_ResultadosMtto.php',
+                array('menus2' => $menus)
+            );
+
+        }
+
     }
 ?>
