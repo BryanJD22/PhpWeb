@@ -78,60 +78,55 @@ function eliminarMenu(id_menu) {
     var camposCreate = document.getElementById("camposCrearMenu");
     var camposUpdate = document.getElementById("camposUpdatearMenu");
     if (id_padreGuardada !== 0) {
-      //desahbilito el campo y asigno el valor
-      document.getElementById("id_padre").disabled = true;
-      document.querySelector("#id_padre").value = id_padreGuardada;
+        // Deshabilitar el campo y asignar el valor
+        document.getElementById("id_menu_padre").disabled = true;
+        document.querySelector("#id_menu_padre").value = id_padreGuardada;
     } else {
-      document.getElementById("id_padre").disabled = true;
-      document.querySelector("#id_padre").value = 0;
+        document.getElementById("id_menu_padre").disabled = true;
+        document.querySelector("#id_menu_padre").value = 0;
     }
-    if (orden_guardada !== 0) {
-      //deshabilito el campo y asigno el valor
-      document.getElementById("orden").disabled = true;
-      document.querySelector("#orden").value = orden_guardada;
-    }
-    if (camposCreate.style.display === "none") {
-      if (camposUpdate.style.display === "block") {
-          camposUpdate.style.display = "none";
-          camposCreate.style.display = "block";
-      } else {
-          camposCreate.style.display = "block";
-      }
-  } else {
-      camposCreate.style.display = "none";
-  }
-  
-    console.log(document.querySelector("#id_padre").value = id_padreGuardada);
-    console.log(document.querySelector("#orden").value = orden_guardada);
-  
-  }
 
-  function guardarOrden(orden) {
-    orden_guardada = orden;
-    console.log("Estoy guardando el orden" + orden_guardada);
-  }
+    
+    if (camposCreate.style.display === "none") {
+        if (camposUpdate.style.display === "block") {
+            camposUpdate.style.display = "none";
+            camposCreate.style.display = "block";
+        } else {
+            camposCreate.style.display = "block";
+        }
+    } else {
+        camposCreate.style.display = "none";
+    }
+}
+
 
   function isertMenu(){
     let opciones = { method: "POST" };
     
     let parametros = "controlador=Menus&metodo=crearMenu";
-    
-    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formulario_crear"))).toString();
+
+    let id_menu_padre = document.getElementById("id_menu_padre").value;
+
+    parametros += "&id_menu_padre=" + id_menu_padre;
+
+    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioCrearMenuF"))).toString();
 
     console.log(parametros);
 
     fetch("C_Ajax.php?" + parametros, opciones)
-        .then(res => {
-            if (res.ok) {
-
-                console.log('Usuario agregado correctamente');
-                return res.text();
-                
-            }
-        })
-        .catch(err => {
-            console.log("Error al realizar la petición.", err.message);
-        });
+    .then(res => {
+        if (res.ok) {
+            console.log('Menu agregado correctamente');
+            return res.text();
+        }
+    })
+    .then(responseText => {
+        // Recargar la vista después de agregar el menú
+        buscarMenus();
+    })
+    .catch(err => {
+        console.log("Error al realizar la petición.", err.message);
+    });
   }
 
 

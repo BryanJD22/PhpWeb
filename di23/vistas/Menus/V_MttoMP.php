@@ -29,26 +29,21 @@
             <!-- Campos del formulario -->
 
             <!-- Campo Nombre del Menú -->
-            <label for="nombre_menu">Nombre del Menú:</label>
+            <label for="titulo">Titulo del Menú:</label>
             <div id="nombreMenuError" class="error-field"></div>
-            <input type="text" id="nombre_menu" name="nombre_menu" placeholder="Nombre del Menú" require><br>
+            <input type="text" id="titulo" name="titulo" placeholder="Titulo del Menú" require><br>
 
             <!-- Campo ID del Padre -->
-            <label for="id_padre">ID del Padre:</label>
+            <label for="id_menu_padre">ID del Padre:</label>
             <div id="idPadreError" class="error-field"></div>
-            <input type="text" id="id_padre" name="id_padre" placeholder="ID del Padre"><br>
+            <input type="text" id="id_menu_padre" name="id_menu_padre" placeholder="ID del Padre"><br>
 
             <!-- Campo Acción -->
             <label for="accion">Acción:</label>
             <div id="accionError" class="error-field"></div>
             <input type="text" id="accion" name="accion" placeholder="Acción"><br>
 
-              <!-- Campo Orden -->
-            <label for="orden">Orden:</label>
-            <div id="ordenError" class="error-field"></div>
-            <input type="text" id="orden" name="orden" placeholder="Orden"><br>
-
-            <button type="button" id="btnInsertar" name="btnInsertar"  class="btn btn-success" onclick="validarMenu();">Insertar
+            <button type="button" id="btnInsertar" name="btnInsertar"  class="btn btn-success" onclick="isertMenu();">Insertar
                 Menú</button>
         </div>
     </form>

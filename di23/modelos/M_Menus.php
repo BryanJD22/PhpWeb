@@ -54,57 +54,40 @@ class M_Menus extends Modelo
       return $menus;
   
     }
+    
 
-    // public function crearMenu($parameters = array())
-    // {
-    //   $nombre_menu = "";
-    //   $id_padre = "";
-    //   $accion = "";
-    //   $orden = "";
-  
-    //   extract($parameters);
-    //   echo $nombre_menu . " - " . $id_padre . " - " . $accion . " - " . $orden;
+    public function crearMenu($parameters = array())  
+    {
+      $titulo = "";
+      $id_menu_padre = "";
+      $accion = "";
+      $orden = "";
+    
+      extract($parameters);
+      echo $titulo . " - " . $id_menu_padre . " - " . $accion;
+    
+      $sqlPosicion = "SELECT MAX(posicion) AS ultima_posicion FROM menus where id_menu_padre = $id_menu_padre;";
+      $result = $this->DAO->consultar($sqlPosicion);
+    
+      // Verificar si la consulta devolvió resultados
+      if (!empty($result)) {
+        // Obtener el valor de la última posición
+        $ultima_posicion = $result[0]['ultima_posicion'];
+    
+        // Incrementar el valor de la última posición
+        $orden = $ultima_posicion + 1;
+      } else {
+        // Si la consulta no devuelve resultados, establecer el orden como 1
+        $orden = 1;
+      }
+    
+      $SQL = "INSERT INTO `menus`(`posicion`, `titulo`, `id_menu_padre`, `accion`) VALUES ($orden, '$titulo', $id_menu_padre, '$accion');";
+      $this->DAO->insertar($SQL);
+      $mensaje = "Menu creado correctamente";
+      return $mensaje;
+    }
+    
 
-    //   $sqlPosicion = "SELECT MAX(posicion) AS ultima_posicion FROM menus where id_menu_padre = $id_padre;"
-  
-    //   //condicion compruebe que no existe un menu con el mismo nombre
-    //   $sqlVerificarMenu = "SELECT COUNT(*) AS total FROM Menu WHERE NOMBRE_MENU = '$nombre_menu';";
-    //   $resultadoVerificarMenu = $this->DAO->consultar($sqlVerificarMenu);
-    //   $filaNombre = $resultadoVerificarMenu[0]['total'];
-    //   if ($filaNombre > 0) {
-    //     echo "Error: Ya existe un menu con el mismo nombre.";
-    //     return;
-    //   }
-    //   //al no ser auto increment lo hago a mano para que no de error
-    //   // $SQLid_menu = "SELECT COUNT(*) AS num_menus FROM Menu";
-    //   // $num_menus = $this->DAO->consultar($SQLid_menu);
-    //   // $id_menu = $num_menus[0]['num_menus'];
-    //   // $id_menu = $id_menu + 1;
-  
-    //   // //GESTIONO AL PADRE
-    //   // if ($id_padre == 0) {
-    //   //   $id_padre = "";
-  
-    //   // }
-  
-    //   // Incrementar el orden 
-    //   $ordenIncrementado = $orden + 1;
-  
-    //   //comprobacion nombre
-    //   if ($nombre_menu != "") {
-    //     // $nombre_menu = addslashes($nombre_menu);
-    //     // $id_padre = addslashes($id_padre);
-    //     // $accion = addslashes($accion);
-  
-    //     $SQL = "INSERT INTO Menu (id_menu, nombre_menu, id_padre, accion, orden) VALUES ('$id_menu', '$nombre_menu', '$id_padre', '$accion', '$ordenIncrementado');";
-    //     echo $SQL;
-    //     $menus = $this->DAO->insertar($SQL);
-    //     $sqlActualizarOrden = "UPDATE Menu SET ORDEN = ORDEN + 1 WHERE ORDEN >= '$ordenIncrementado'";
-    //     $this->DAO->actualizar($sqlActualizarOrden);
-    //     return $menus;
-    //   } else {
-    //     echo "Error: EL CAMPO NOMBRE";
-    //   }
-    // }
+
 }
 ?>

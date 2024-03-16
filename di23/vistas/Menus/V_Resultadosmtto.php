@@ -21,10 +21,12 @@ function generarHTML($menu, $nivel = 0)
 
         echo '<br>';
         echo '<button class="btn btn-success" type="button" name="btnCrearMenus" id="btnCrearMenus" 
-            style="margin: 5px;" onclick="guardarIdMenuPadre(' . $menu['id_menu_padre'] . ');guardarOrden('.$menu['posicion'].'); mostrarCamposCreateMenu();">Crear Hijo</button>';
+            style="margin: 5px;" onclick="guardarIdMenuPadre(' . $menu['id_menu'] . '); mostrarCamposCreateMenu();">Crear Hijo</button>';
     
     echo '</div>';
     
+    // guardarOrden('.$menu['id_menu'].');
+
     if (!empty($menu['hijos'])) {
         foreach ($menu['hijos'] as $hijo) {
             generarHTML($hijo, $nivel + 1);
