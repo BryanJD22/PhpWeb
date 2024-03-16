@@ -38,6 +38,7 @@ function generarHTML($menu, $nivel = 0)
 
 $menus = $datos['menus2'];
 
+print_r($menus);
 foreach ($menus as $menu) {
     generarHTML($menu, 1); 
     echo '<button class="btn btn-success" type="button" name="btnCrearPadre" id="btnCrearPadre"

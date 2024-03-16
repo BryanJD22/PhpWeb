@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-03-2024 a las 13:36:28
+-- Tiempo de generación: 15-03-2024 a las 12:48:37
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -47,9 +47,7 @@ INSERT INTO `menus` (`id_menu`, `posicion`, `titulo`, `id_menu_padre`, `accion`,
 (4, 4, 'Cruds', NULL, NULL, 1),
 (5, 1, 'Usuarios', 4, 'getVistaMenuSeleccionado(\'Usuarios\', \'getVistaUsuarios\')', 1),
 (8, 5, 'Mantenimiento', NULL, NULL, 1),
-(9, 1, 'Mtto Menus y Permisos', 8, 'getVistaMenuSeleccionado(\'Menus\', \'getVistaMtto\')', 1),
-(33, 1, 'Prueba ', 1, '', 0),
-(34, 1, 'prueba', 33, '', 0);
+(9, 1, 'Mtto Menus y Permisos', 8, 'getVistaMenuSeleccionado(\'Menus\', \'getVistaMtto\')', 1);
 
 -- --------------------------------------------------------
 
@@ -376,7 +374,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
