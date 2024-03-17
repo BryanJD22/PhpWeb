@@ -1,5 +1,5 @@
 <?php
-    //Hacemos una comprobacion para saber si el usuario ha iniciado sesion y en caso de que haya iniciado le mosntramos el siguiente mensaje
+    
 
     $usuario = $datos['usuarios'];
 ?>

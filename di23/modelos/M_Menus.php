@@ -37,14 +37,21 @@ class M_Menus extends Modelo
       foreach ($menus as $menu) {
         if ($menu['id_menu_padre'] == 0) {
           $menuBueno[$menu['id_menu']] = $menu;
-  
         } else {
           $menuBueno[$menu['id_menu_padre']]['hijos'][] = $menu;
-  
         }
       }
       return $menuBueno;
     }
+    public function buscarMenuporID($parameters = array())
+    {
+      $id_menu = "";
+      extract($parameters);
+      $SQL = "SELECT * FROM menus WHERE id_menu = $id_menu";
+      $menus = $this->DAO->consultar($SQL);
+      return $menus;
+    }
+    
 
     public function eliminarMenu($parameters = array()){
       $id_menu = "";
@@ -87,7 +94,46 @@ class M_Menus extends Modelo
       return $mensaje;
     }
     
+  
+    public function editarMenu($filtro=array()){
+      //sexo  mail  movil  login  pass
+      $id_menu='';
+      $titulo='';
+      $id_menu_padre='';
+      $accion='';
+      $orden='';
+      extract($filtro);
 
+      $SET='';
+
+      if($titulo!=null){
+          $SET.= "titulo='$titulo',";
+      }
+      if($id_menu_padre!= ''){
+          $SET.= "id_menu_padre='$id_menu_padre',";
+      }
+      if($accion!= ''){
+          $SET.= "accion='$accion',";
+      }
+      if($orden!= ''){
+          $SET.= "orden='$orden',";
+      }
+
+      $SET = mb_substr($SET, 0, -1);
+      $SQL="UPDATE menus SET $SET WHERE id_menu=$id_menu";
+
+      echo($SQL);
+      $respuesta=$this->DAO->actualizar($SQL);
+      
+      if($respuesta!=null){
+          $insertado = 'Actualizado correctamente';
+          return $insertado;
+      }else{
+          $insertado = 'Ha ocurrido un error al actualizar';
+          return $insertado;
+      }
+      
+  }
 
 }
 ?>

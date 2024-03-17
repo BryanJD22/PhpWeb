@@ -42,15 +42,41 @@
            
         }
 
-        public function busquedaMenus($parameters = array())
-        {
+        public function busquedaMenus($parameters = array()){
             $menus = $this->modelo->buscarMenuMtto($parameters);
-            // Vista::render('vistas\Menus\V_Menu.php', array('menuBueno'=>$menus));
-            // Vista::render('vistas\Menus\V_MttoMenu.php');
             Vista::render(
                 'vistas\Menus\V_Resultadosmtto.php',
                 array('menus2' => $menus)
             );
+            
+
+            // $menus = $this->modelo->buscarMenuMtto($parameters);
+            // Vista::render('vistas\Menus\V_Menu.php', array('menuBueno'=>$menus));
+            // Vista::render('vistas\Menus\V_MttoMenu.php');
+            // if (isset($parameters['id_menu'])) {
+            //     $menus = $this->modelo->buscarMenuMtto($parameters);
+            //     $_SESSION['menuUpdate'] = $menus;
+            //     // Vista::render(
+            //     //     'vistas\Menus\V_MttoMP.php',
+            //     //     array('menus2' => $menus)
+            //     // );
+            // } else {
+            //     $menus = $this->modelo->buscarMenuMtto($parameters);
+            //     Vista::render(
+            //         'vistas\Menus\V_Resultadosmtto.php',
+            //         array('menus2' => $menus)
+            //     );
+            // }
+
+
+        }
+        public function busquedaMenusPorID($parameters = array()){
+            $menus = $this->modelo->buscarMenuporID($parameters);
+            Vista::render(
+                'vistas\Menus\V_Menus_Editar.php',
+                array('menus2' => $menus)
+            );
+        
         }
 
         public function eliminarMenu($parameters = array()){
@@ -67,6 +93,13 @@
             $menus = $this->modelo->crearMenu($parameters);
             
 
+        }
+
+        public function editarMenu($filtros=array()){
+            $menus = $this->modelo->editarMenu($filtros);
+            
+            // Vista::render('vistas/Menus/V_Menus_Editar.php', array('menus2' => $menus));
+            
         }
 
 

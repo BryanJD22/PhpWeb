@@ -1,7 +1,7 @@
 //funcion para printar en una vista los menus de usuario
 id_menuGuardada = 0;
 id_padreGuardada = 0;
-function buscarMenus( id_menu  // id_padre
+function buscarMenus(   
 ) {
   let opciones = { method: "GET" };
   let parametros = "controlador=Menus&metodo=busquedaMenus";
@@ -10,14 +10,9 @@ function buscarMenus( id_menu  // id_padre
     new URLSearchParams(
       new FormData(document.getElementById("formBusquedaMenus"))
     ).toString();
-  if (id_menu != null) {
-    parametros += "&id_menu=" + id_menu;
-    console.log("parametros: " + parametros);
-  }
-  // if (id_padre != null) {
-  //     metodos += "&id_padre=" + id_padre;
-  //     console.log("parametros: " + metodos)
-  // }
+
+
+
   fetch("C_Ajax.php?" + parametros, opciones)
     .then((res) => {
       if (res.ok) {
@@ -33,6 +28,73 @@ function buscarMenus( id_menu  // id_padre
       console.log("Error al realizar la peticion.", err.message);
     });
 }
+
+function buscarMenusporID( id_menu  
+) {
+  let opciones = { method: "GET" };
+  let parametros = "controlador=Menus&metodo=busquedaMenusPorID";
+  parametros +=
+    "&" +
+    new URLSearchParams(
+      new FormData(document.getElementById("formBusquedaMenus"))
+    ).toString();
+    parametros += "id_menu=" + id_menu;
+    console.log("parametros: " + parametros);
+  
+  fetch("C_Ajax.php?" + parametros, opciones)
+    .then((res) => {
+      if (res.ok) {
+        console.log("Respuesta ok");
+        return res.text();
+      }
+    })
+    .then((vista) => {
+      document.getElementById("formularioEditar_" + id_menu).innerHTML = vista;
+      console.log("deberia ir bien");
+    })
+    .catch((err) => {
+      console.log("Error al realizar la peticion.", err.message);
+    });
+
+}
+function toggleFormularioEditar(menuId) {
+  var formularioEditar = document.getElementById('formularioEditar_' + menuId);
+  if (formularioEditar) {
+      var formularios = document.querySelectorAll('.formularioEditar');
+      for (var i = 0; i < formularios.length; i++) {
+          if (formularios[i] !== formularioEditar) {
+              formularios[i].style.display = 'none';
+          }
+      }
+      formularioEditar.style.display = (formularioEditar.style.display === 'none') ? 'block' : 'none';
+  } else {
+      console.log('El elemento formularioEditar_' + menuId + ' no se encontró en el DOM.');
+  }
+}
+function updateMenu(id_menu){
+  let opciones = { method: "GET" };
+    let parametros = "controlador=Menus&metodo=editarMenu";
+    parametros += "&id_menu=" + id_menu + "&" + new URLSearchParams(new FormData(document.getElementById("formularioUpdatearMenu"))).toString();
+
+    console.log(parametros)
+
+    fetch("C_Ajax.php?" + parametros, opciones)
+        .then(res => {
+            if (res.ok) {
+                console.log('respuesta ok');
+                
+                return res.text();
+            }
+        })
+        .then(vista => {
+          document.getElementById("formularioEditar_" + id_menu).innerHTML = vista;
+        })
+        .catch(err => {
+            //Error al realizar la petición Cannot set properties of null (setting 'innerHTML')
+            console.log("Error al realizar la petición", err.message);
+        });
+
+};
 
 function eliminarMenu(id_menu) {
   buscarMenus(id_menu);
@@ -66,6 +128,12 @@ function eliminarMenu(id_menu) {
   
 
 }
+  function guardarIdMenu(id_menu,) { 
+    buscarMenus(id_menu);
+
+    console.log("Estoy guardando el id (guardarMenuId) " + id_menuGuardada);
+  
+  }
 
   function guardarIdMenuPadre(id_padre) {
     buscarMenus(null, id_padre);
@@ -132,8 +200,21 @@ function eliminarMenu(id_menu) {
 
 
 
+function mostrarCamposUpdateMenu() {
+  var camposCreate = document.getElementById("camposCrearMenu");
+  var camposUpdate = document.getElementById("camposUpdatearMenu");
+  if (camposUpdate.style.display === "none") {
+    if (camposCreate.style.display === "block") {
+      camposCreate.style.display = "none";
+      camposUpdate.style.display = "block";
+    } else {
+      camposUpdate.style.display = "block";
+    }
+  } else {
+    camposUpdate.style.display = "none";
+  }
 
-
+}
 
 
 

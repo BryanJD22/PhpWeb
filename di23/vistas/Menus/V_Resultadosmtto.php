@@ -14,15 +14,19 @@ function generarHTML($menu, $nivel = 0)
 
     echo '<div id="botonesMenu" name="botonesMenu">';
         echo '<button  class="btn btn-success" type="button" name="btnActualizarMenus" id="btnActualizarMenus" 
-        style="margin: 5px;" onclick="guardarIdMenu(' . $menu['id_menu'] . ');">Actualizar Menú</button>';
+        style="margin: 5px;" onclick="buscarMenusporID('. $menu['id_menu'] .');toggleFormularioEditar(' . $menu['id_menu'] . ');">Actualizar Menú</button>';
 
+        
         echo '<button class="btn btn-success" type="button" name="btnEliminarMenus" id="btnEliminarMenus" 
         style="margin: 5px;" onclick="eliminarMenu(' . $menu['id_menu'] . ')">Eliminar Menú</button>';
 
         echo '<br>';
-        echo '<button class="btn btn-success" type="button" name="btnCrearMenus" id="btnCrearMenus" 
-            style="margin: 5px;" onclick="guardarIdMenuPadre(' . $menu['id_menu'] . '); mostrarCamposCreateMenu();">Crear Hijo</button>';
-    
+        if (empty($menu['id_menu_padre'])) {
+            echo '<button class="btn btn-success" type="button" name="btnCrearMenus" id="btnCrearMenus" 
+                style="margin: 5px;" onclick="guardarIdMenuPadre(' . $menu['id_menu'] . '); mostrarCamposCreateMenu();">Crear Hijo</button>';
+        }
+        echo '<br>';
+
     echo '</div>';
     
     // guardarOrden('.$menu['id_menu'].');
@@ -33,17 +37,21 @@ function generarHTML($menu, $nivel = 0)
         }
     }
     echo '</div>';
+    echo '<div id="formularioEditar_' . $menu['id_menu'] . '" class="formularioEditar" style="display: none; margin-top: 10px;">';
+    echo '</div>';
 }
 
 
 $menus = $datos['menus2'];
 
-print_r($menus);
+
+
 foreach ($menus as $menu) {
     generarHTML($menu, 1); 
     echo '<button class="btn btn-success" type="button" name="btnCrearPadre" id="btnCrearPadre"
             onclick="mostrarCamposCreateMenu()">Nuevo Padre</button>';
 }
+
 
 
 ?>
