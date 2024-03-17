@@ -24,6 +24,7 @@
 
             Vista::render('vistas/Menus/V_Menus.php', 
                             array('permisos' => $permisos));
+                            
         }
         
         // public function getVistaMtto($parameters = array())
@@ -34,8 +35,7 @@
            
         // }
                 
-        public function getVistaMtto()
-        {
+        public function getVistaMtto(){
             //$menus = $this->modelo->buscarMenu($parameters);
             
             Vista::render('vistas\Menus\V_MttoMP.php');
@@ -49,24 +49,6 @@
                 array('menus2' => $menus)
             );
             
-
-            // $menus = $this->modelo->buscarMenuMtto($parameters);
-            // Vista::render('vistas\Menus\V_Menu.php', array('menuBueno'=>$menus));
-            // Vista::render('vistas\Menus\V_MttoMenu.php');
-            // if (isset($parameters['id_menu'])) {
-            //     $menus = $this->modelo->buscarMenuMtto($parameters);
-            //     $_SESSION['menuUpdate'] = $menus;
-            //     // Vista::render(
-            //     //     'vistas\Menus\V_MttoMP.php',
-            //     //     array('menus2' => $menus)
-            //     // );
-            // } else {
-            //     $menus = $this->modelo->buscarMenuMtto($parameters);
-            //     Vista::render(
-            //         'vistas\Menus\V_Resultadosmtto.php',
-            //         array('menus2' => $menus)
-            //     );
-            // }
 
 
         }
@@ -92,7 +74,6 @@
         public function crearMenu($parameters = array()){
             $menus = $this->modelo->crearMenu($parameters);
             
-
         }
 
         public function editarMenu($filtros=array()){

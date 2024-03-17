@@ -195,6 +195,19 @@ function mostrarcrearPadre() {
     let opciones = { method: "POST" };
     
     let parametros = "controlador=Menus&metodo=crearMenu";
+    // Obtener el valor del título del menú
+    let tituloMenu = document.getElementById("titulo").value;
+
+    // Verificar si el campo del título está vacío
+    if (tituloMenu.trim() === "") {
+        // Mostrar mensaje de error
+        document.getElementById("errorNombreMenu").innerHTML = "El título del menú es obligatorio.";
+        return; // Detener la ejecución de la función si hay un error
+    }
+
+    // Limpiar mensaje de error si el título es válido
+    document.getElementById("errorNombreMenu").innerHTML = "";
+
     if (id_menuGuardada != null) {
       parametros += "&id_menu=" + id_menuGuardada;
       console.log("parametros: " + parametros);
@@ -217,12 +230,7 @@ function mostrarcrearPadre() {
     .then(responseText => {
          var camposCreate = document.getElementById("camposCrearMenu");
          camposCreate.style.display = "none";
-        //  if (camposCreate.style.display === "none") {
-        //   camposCreate.style.display = "block";
-        // } else {
-        //     camposCreate.style.display = "none";
-        // }
-        // Recargar la vista después de agregar el menú
+         
         buscarMenus();
     })
     .catch(err => {
@@ -249,3 +257,6 @@ function mostrarCamposUpdateMenu() {
 
 }
 
+function visualizarMenu(){
+  alert("No tienes permisos para visualizar el mantenimiento de menus.")
+}

@@ -73,8 +73,9 @@ class M_Menus extends Modelo
       extract($parameters);
       echo $titulo . " - " . $id_menu_padre . " - " . $accion;
 
-          // Verificar si el id_menu está presente
+    // Verificar si el id_menu está presente
     if (!empty($id_menu)) {
+ 
       // Realizar alguna acción si el id_menu está presente
       $sqlPosicion2 = "SELECT posicion AS posicion FROM menus where id_menu = $id_menu;";
       $result = $this->DAO->consultar($sqlPosicion2);

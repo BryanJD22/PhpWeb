@@ -1,7 +1,22 @@
 <?php
 
 
-    
+$visualizar = 0;
+$editar = 0;
+$crear = 0;
+if(isset($_SESSION['permisos'])){
+    $permisos = $_SESSION['permisos'];
+    foreach($permisos as $permiso){
+        if($permiso['id_permiso'] == 1){
+            $visualizar = 1;
+        }elseif ($permiso['id_permiso'] == 2){
+            $editar = 1;
+        }elseif ($permiso['id_permiso'] == 3){
+            $crear = 1;
+        }
+
+    }
+}
 
 
 ?>
@@ -12,12 +27,28 @@
     </h2>
     
 </div>
-<form id="formBusquedaMenus" name="formBusquedaMenus">
+
+<?php
+    if($visualizar== 1){
+        echo '<form id="formBusquedaMenus" name="formBusquedaMenus">';
+            echo '<button type="button" class="btn btn-success" name="btnBuscarMenus" id="btnBuscarMenus"';
+        echo 'onclick="buscarMenus()">Buscar</button>';
+        echo '</form>';
+
+    }else{
+        echo '<form id="formBusquedaMenus" name="formBusquedaMenus">';
+            echo '<button type="button" class="btn btn-success" name="btnBuscarMenus" id="btnBuscarMenus"';
+            echo 'onclick="visualizarMenu()">Buscar</button>';
+        echo '</form>';
+    }
+
+?>
+<!-- <form id="formBusquedaMenus" name="formBusquedaMenus">
         <button type="button" class="btn btn-success" name="btnBuscarMenus" id="btnBuscarMenus"
-            onclick="buscarMenus()">Buscar</button>
+            onclick="buscarMenus()">Buscar</button> -->
         <!-- <button class="btn btn-primary" type="button" name="btnCrearMenus" id="btnCrearMenus"
             onclick="mostrarCamposCreateMenu()">Nuevo Menú</button> -->
-    </form>
+    <!-- </form> -->
 
 <div id="bloqueFormMttoMenu">
 
@@ -37,7 +68,7 @@
             <!-- Campo Nombre del Menú -->
             <label for="titulo">Titulo del Menú:</label>
             <div id="nombreMenuError" class="error-field" required></div>
-            <input type="text" id="titulo" name="titulo" placeholder="Titulo del Menú" required><br>
+            <input type="text" id="titulo" name="titulo" placeholder="Titulo del Menú" class="form-control" required><br>
 
             <!-- Campo ID del Padre -->
             <div id="campoIdPadre">
