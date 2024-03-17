@@ -36,14 +36,15 @@
 
             <!-- Campo Nombre del Menú -->
             <label for="titulo">Titulo del Menú:</label>
-            <div id="nombreMenuError" class="error-field"></div>
-            <input type="text" id="titulo" name="titulo" placeholder="Titulo del Menú" require><br>
+            <div id="nombreMenuError" class="error-field" required></div>
+            <input type="text" id="titulo" name="titulo" placeholder="Titulo del Menú" required><br>
 
             <!-- Campo ID del Padre -->
-            <label for="id_menu_padre">ID del Padre:</label>
-            <div id="idPadreError" class="error-field"></div>
-            <input type="text" id="id_menu_padre" name="id_menu_padre" placeholder="ID del Padre"><br>
-
+            <div id="campoIdPadre">
+                <label for="id_menu_padre">ID del Padre:</label>
+                <div id="idPadreError" class="error-field"></div>
+                <input type="text" id="id_menu_padre" name="id_menu_padre" placeholder="ID del Padre"><br>
+            </div>
             <!-- Campo Acción -->
             <label for="accion">Acción:</label>
             <div id="accionError" class="error-field"></div>

@@ -63,8 +63,8 @@ class M_Menus extends Modelo
     }
     
 
-    public function crearMenu($parameters = array())  
-    {
+    public function crearMenu($parameters = array()){
+      $id_menu = "";
       $titulo = "";
       $id_menu_padre = "";
       $accion = "";
@@ -72,26 +72,52 @@ class M_Menus extends Modelo
     
       extract($parameters);
       echo $titulo . " - " . $id_menu_padre . " - " . $accion;
-    
-      $sqlPosicion = "SELECT MAX(posicion) AS ultima_posicion FROM menus where id_menu_padre = $id_menu_padre;";
-      $result = $this->DAO->consultar($sqlPosicion);
-    
-      // Verificar si la consulta devolvió resultados
+
+          // Verificar si el id_menu está presente
+    if (!empty($id_menu)) {
+      // Realizar alguna acción si el id_menu está presente
+      $sqlPosicion2 = "SELECT posicion AS posicion FROM menus where id_menu = $id_menu;";
+      $result = $this->DAO->consultar($sqlPosicion2);
       if (!empty($result)) {
         // Obtener el valor de la última posición
-        $ultima_posicion = $result[0]['ultima_posicion'];
+        $ultima_posicion = $result[0]['posicion'];
     
         // Incrementar el valor de la última posición
         $orden = $ultima_posicion + 1;
+
       } else {
         // Si la consulta no devuelve resultados, establecer el orden como 1
         $orden = 1;
       }
-    
-      $SQL = "INSERT INTO `menus`(`posicion`, `titulo`, `id_menu_padre`, `accion`) VALUES ($orden, '$titulo', $id_menu_padre, '$accion');";
+      $SQL = "INSERT INTO `menus`(`posicion`, `titulo`, `accion`) VALUES ($orden, '$titulo', '$accion');";
       $this->DAO->insertar($SQL);
+      $sqlActualizarOrden = "UPDATE menus SET posicion = posicion + 1 WHERE posicion >= '$orden'";
+      $this->DAO->actualizar($sqlActualizarOrden);
+
+    } else {
+        // Realizar otra acción si el id_menu no está presente
+        $sqlPosicion = "SELECT MAX(posicion) AS ultima_posicion FROM menus where id_menu_padre = $id_menu_padre;";
+        $result = $this->DAO->consultar($sqlPosicion);
+      
+        // Verificar si la consulta devolvió resultados
+        if (!empty($result)) {
+          // Obtener el valor de la última posición
+          $ultima_posicion = $result[0]['ultima_posicion'];
+      
+          // Incrementar el valor de la última posición
+          $orden = $ultima_posicion + 1;
+        } else {
+          // Si la consulta no devuelve resultados, establecer el orden como 1
+          $orden = 1;
+        }
+        $SQL = "INSERT INTO `menus`(`posicion`, `titulo`, `id_menu_padre`, `accion`) VALUES ($orden, '$titulo', $id_menu_padre, '$accion');";
+        $this->DAO->insertar($SQL);
+    }
+    
+
       $mensaje = "Menu creado correctamente";
       return $mensaje;
+
     }
     
   

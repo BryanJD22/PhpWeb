@@ -49,7 +49,7 @@ $menus = $datos['menus2'];
 foreach ($menus as $menu) {
     generarHTML($menu, 1); 
     echo '<button class="btn btn-success" type="button" name="btnCrearPadre" id="btnCrearPadre"
-            onclick="mostrarCamposCreateMenu()">Nuevo Padre</button>';
+            onclick="guardarIdMenu(' . $menu['id_menu'] . ');mostrarcrearPadre()";>Nuevo Padre</button>';
 }
 
 
