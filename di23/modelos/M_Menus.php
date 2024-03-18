@@ -14,9 +14,9 @@ class M_Menus extends Modelo
 
     public function buscarmenus(){
         $SQL = "SELECT * FROM menus";
-
         // echo $SQL;
         $menus = $this->DAO->consultar($SQL);
+
         return $menus;
     }
 
@@ -33,7 +33,13 @@ class M_Menus extends Modelo
     public function buscarMenuMtto()
     {
       $SQL = "SELECT * FROM menus WHERE 1=1 ORDER BY id_menu_padre ASC, posicion ASC";
+
+      $sqlPermisos = "SELECT P.id_Permiso, P.nombre, P.id_menu FROM permisos P INNER JOIN menus M ON P.id_menu = m.id_menu;";
+
+      $permisosMenu = $this->DAO->consultar($sqlPermisos);
+
       $menus = $this->DAO->consultar($SQL);
+
       foreach ($menus as $menu) {
         if ($menu['id_menu_padre'] == 0) {
           $menuBueno[$menu['id_menu']] = $menu;
@@ -41,7 +47,12 @@ class M_Menus extends Modelo
           $menuBueno[$menu['id_menu_padre']]['hijos'][] = $menu;
         }
       }
-      return $menuBueno;
+
+      $resultados = array(
+        'menus' => $menuBueno,
+        'permisosMenu' => $permisosMenu
+    );
+      return $resultados;
     }
     public function buscarMenuporID($parameters = array())
     {
@@ -113,12 +124,25 @@ class M_Menus extends Modelo
         }
         $SQL = "INSERT INTO `menus`(`posicion`, `titulo`, `id_menu_padre`, `accion`) VALUES ($orden, '$titulo', $id_menu_padre, '$accion');";
         $this->DAO->insertar($SQL);
+        
     }
     
 
       $mensaje = "Menu creado correctamente";
       return $mensaje;
 
+    }
+
+    public function buscarUsuarioRol(){
+        $sqlUsuarios = "SELECT id_usuario, login FROM usuarios order by id_usuario;";
+        $sqlRol =  "SELECT id_rol, nombre FROM roles order by id_rol";
+        $usuarios = $this->DAO->consultar($sqlUsuarios);
+        $roles = $this->DAO->consultar($sqlRol);
+        $resultados = array(
+          'usuarios' => $usuarios,
+          'roles' => $roles
+      );
+        return $resultados;
     }
     
   

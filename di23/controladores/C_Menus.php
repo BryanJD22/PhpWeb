@@ -41,17 +41,21 @@
             Vista::render('vistas\Menus\V_MttoMP.php');
            
         }
-
+        
         public function busquedaMenus($parameters = array()){
-            $menus = $this->modelo->buscarMenuMtto($parameters);
+            $resultados  = $this->modelo->buscarMenuMtto($parameters);
+            $menus = $resultados['menus'];
+            $permisosMenu = $resultados['permisosMenu'];
+
             Vista::render(
                 'vistas\Menus\V_Resultadosmtto.php',
-                array('menus2' => $menus)
+                array(
+                    'menus' => $menus,
+                    'permisosMenu' => $permisosMenu
+                )
             );
-            
-
-
         }
+        
         public function busquedaMenusPorID($parameters = array()){
             $menus = $this->modelo->buscarMenuporID($parameters);
             Vista::render(
@@ -73,7 +77,7 @@
 
         public function crearMenu($parameters = array()){
             $menus = $this->modelo->crearMenu($parameters);
-            
+
         }
 
         public function editarMenu($filtros=array()){
@@ -83,6 +87,21 @@
             
         }
 
+        public function buscarUsuarioRol(){
+            
+            $resultados = $this->modelo->buscarUsuarioRol();
+            
+            $usuarios = $resultados['usuarios'];
+            $roles = $resultados['roles'];
+
+            Vista::render(
+                'vistas\Menus\V_MttoMP.php',
+                array(
+                    'usuarios' => $usuarios,
+                    'roles' => $roles
+                )
+            );
+        }
 
 
 

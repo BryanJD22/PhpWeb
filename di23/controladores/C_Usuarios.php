@@ -40,6 +40,8 @@
             //echo json_encode($usuarios);
             Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', 
                             array('usuarios'=>$usuarios));
+
+            
         }
 //////////////////////////////////////////////////////////////////////////
         public function crearUsuario($filtros = array()) {

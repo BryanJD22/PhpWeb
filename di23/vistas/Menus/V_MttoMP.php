@@ -1,5 +1,16 @@
+        
+
+<?php
+    require_once 'controladores/C_Menus.php';
+    $menu = new C_Menus();
+    $menu -> buscarUsuarioRol();
+?>
+
 <?php
 
+$usuarios = $datos['usuarios'];
+$roles = $datos['roles'];
+print_r($roles);
 
 $visualizar = 0;
 $editar = 0;
@@ -32,7 +43,7 @@ if(isset($_SESSION['permisos'])){
     if($visualizar== 1){
         echo '<form id="formBusquedaMenus" name="formBusquedaMenus">';
             echo '<button type="button" class="btn btn-success" name="btnBuscarMenus" id="btnBuscarMenus"';
-        echo 'onclick="buscarMenus()">Buscar</button>';
+            echo 'onclick="buscarMenus()">Buscar</button>';
         echo '</form>';
 
     }else{

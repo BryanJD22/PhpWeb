@@ -1,6 +1,6 @@
 <?php
 
-function generarHTML($menu, $nivel = 0)
+function generarHTML($menu, $permisosMenus ,$nivel = 0)
 {
     $estilo = '';
     if ($nivel == 1) {
@@ -28,12 +28,23 @@ function generarHTML($menu, $nivel = 0)
         echo '<br>';
 
     echo '</div>';
+    // Mostrar permisos relacionados al menú con checkbox
+    echo '<div id="permisosMenu_' . $menu['id_menu'] . '">';
+    foreach ($permisosMenus as $permiso) {
+        if ($permiso['id_menu'] == $menu['id_menu']) {
+            $checked = 'checked';
+            echo '<label><input type="checkbox" name="permisosMenu[]" value="' . $permiso['id_Permiso'] . '" ' . $checked . '> ' . $permiso['nombre'] . '</label><br>';
+        }
+    }
+    echo '</div>';
+
+
+    echo '</div>';
     
     // guardarOrden('.$menu['id_menu'].');
-
     if (!empty($menu['hijos'])) {
         foreach ($menu['hijos'] as $hijo) {
-            generarHTML($hijo, $nivel + 1);
+            generarHTML($hijo, $permisosMenus, $nivel + 1);
         }
     }
     echo '</div>';
@@ -42,15 +53,18 @@ function generarHTML($menu, $nivel = 0)
 }
 
 
-$menus = $datos['menus2'];
+$menus = $datos['menus'];
+$permisosMenus = $datos['permisosMenu'];
+
 
 
 
 foreach ($menus as $menu) {
-    generarHTML($menu, 1); 
+    generarHTML($menu, $permisosMenus, 1); 
     echo '<button class="btn btn-success" type="button" name="btnCrearPadre" id="btnCrearPadre"
             onclick="guardarIdMenu(' . $menu['id_menu'] . ');mostrarcrearPadre()";>Nuevo Padre</button>';
 }
+
 
 
 
