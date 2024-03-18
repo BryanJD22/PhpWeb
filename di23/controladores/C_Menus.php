@@ -37,8 +37,20 @@
                 
         public function getVistaMtto(){
             //$menus = $this->modelo->buscarMenu($parameters);
+            $resultados = $this->modelo->buscarUsuarioRol();
             
-            Vista::render('vistas\Menus\V_MttoMP.php');
+
+
+            $usuarios = $resultados['usuarios'];
+            $roles = $resultados['roles'];
+
+            Vista::render(
+                'vistas\Menus\V_MttoMP.php',
+                array(
+                    'usuarios' => $usuarios,
+                    'roles' => $roles
+                )
+            );
            
         }
         
@@ -101,6 +113,12 @@
                     'roles' => $roles
                 )
             );
+        }
+
+        public function buscarPermisosUsuarios($parameters = array()){
+            $permisos = $this->modelo->permisosUsuario($parameters);
+            
+
         }
 
 

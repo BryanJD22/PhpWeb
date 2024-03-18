@@ -364,3 +364,15 @@ input[type="text"] {
 .fs-3 {
     font-size: 1.5rem; /* Adjust the font size as needed */
 }
+
+#selectUsuarios,
+#selectRoles {
+    display: inline-block;
+    margin-left: 30px; /* Espacio a la izquierda */
+}
+#contenedorSelects {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    margin-left: 20px;
+}

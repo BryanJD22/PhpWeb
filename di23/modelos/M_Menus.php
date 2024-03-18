@@ -144,6 +144,16 @@ class M_Menus extends Modelo
       );
         return $resultados;
     }
+    public function permisosUsuario($parameters = array()) {
+      $id_usuario = '';
+      extract($parameters);
+
+      $sqlPermisos = "SELECT p.id_permiso, p.nombre FROM permisos p JOIN permisosusuarios pu ON p.id_permiso = pu.id_permiso WHERE pu.id_usuario = $id_usuario";
+      echo($sqlPermisos);
+      $permisos = $this->DAO->consultar($sqlPermisos);
+      return $permisos;
+    }
+
     
   
     public function editarMenu($filtro=array()){

@@ -88,6 +88,7 @@ function updateMenu(id_menu){
         })
         .then(vista => {
           buscarMenus();
+
         })
         .catch(err => {
             //Error al realizar la petición Cannot set properties of null (setting 'innerHTML')
@@ -256,6 +257,33 @@ function mostrarCamposUpdateMenu() {
   }
 
 }
+
+
+function buscarPermisosUsuarios(){
+  let opciones = { method: "GET" };
+  let parametros = "controlador=Menus&metodo=buscarPermisosUsuarios";
+  let login = document.getElementById("selectUsuarios").value;
+  parametros += "&id_usuario=" + login;
+
+  console.log(parametros);
+
+  fetch("C_Ajax.php?" + parametros, opciones)
+    .then((res) => {
+      if (res.ok) {
+        console.log("Respuesta ok");
+        return res.text();
+      }
+    })
+    .then((vista) => {
+      document.getElementById("bloqueMttoMenu").innerHTML = vista;
+      console.log("deberia ir bien");
+    })
+    .catch((err) => {
+      console.log("Error al realizar la peticion.", err.message);
+    });
+
+}
+
 
 function visualizarMenu(){
   alert("No tienes permisos para visualizar el mantenimiento de menus.")

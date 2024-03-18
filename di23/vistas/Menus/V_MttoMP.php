@@ -1,16 +1,12 @@
         
 
-<?php
-    require_once 'controladores/C_Menus.php';
-    $menu = new C_Menus();
-    $menu -> buscarUsuarioRol();
-?>
 
 <?php
 
 $usuarios = $datos['usuarios'];
 $roles = $datos['roles'];
-print_r($roles);
+// $permiso = $datos['permisos'];
+// print_r($permiso);
 
 $visualizar = 0;
 $editar = 0;
@@ -38,22 +34,36 @@ if(isset($_SESSION['permisos'])){
     </h2>
     
 </div>
-
-<?php
-    if($visualizar== 1){
+<div id="contenedorSelects">
+    <?php
+    if ($visualizar == 1) {
         echo '<form id="formBusquedaMenus" name="formBusquedaMenus">';
-            echo '<button type="button" class="btn btn-success" name="btnBuscarMenus" id="btnBuscarMenus"';
-            echo 'onclick="buscarMenus()">Buscar</button>';
+        echo '<button type="button" class="btn btn-success" name="btnBuscarMenus" id="btnBuscarMenus"';
+        echo 'onclick="buscarMenus()">Buscar</button>';
         echo '</form>';
-
-    }else{
+    } else {
         echo '<form id="formBusquedaMenus" name="formBusquedaMenus">';
-            echo '<button type="button" class="btn btn-success" name="btnBuscarMenus" id="btnBuscarMenus"';
-            echo 'onclick="visualizarMenu()">Buscar</button>';
+        echo '<button type="button" class="btn btn-success" name="btnBuscarMenus" id="btnBuscarMenus"';
+        echo 'onclick="visualizarMenu()">Buscar</button>';
         echo '</form>';
     }
+    ?>
+    <select id="selectUsuarios" onchange="buscarPermisosUsuarios()">
+        <option value="">Seleccionar Usuario</option>
+        <?php foreach ($usuarios as $usuario) : ?>
+            <option value="<?php echo $usuario['id_usuario']; ?>"><?php echo $usuario['login']; ?></option>
+        <?php endforeach; ?>
+    </select>
 
-?>
+    <select id="selectRoles">
+        <option value="">Seleccionar Rol</option>
+        <?php foreach ($roles as $rol) : ?>
+            <option value="<?php echo $rol['id_rol']; ?>"><?php echo $rol['nombre']; ?></option>
+        <?php endforeach; ?>
+    </select>
+
+</div>
+
 <!-- <form id="formBusquedaMenus" name="formBusquedaMenus">
         <button type="button" class="btn btn-success" name="btnBuscarMenus" id="btnBuscarMenus"
             onclick="buscarMenus()">Buscar</button> -->
