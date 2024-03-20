@@ -29,9 +29,6 @@ function generarHTML($menu, $nivel = 0)
 
     echo '</div>';
 
-
-
-    echo '</div>';
     
     // guardarOrden('.$menu['id_menu'].');
     if (!empty($menu['hijos'])) {
