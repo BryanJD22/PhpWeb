@@ -56,15 +56,13 @@
         
         public function busquedaMenus($parameters = array()){
             $resultados  = $this->modelo->buscarMenuMtto($parameters);
-            $menus = $resultados['menus'];
-            $permisosMenu = $resultados['permisosMenu'];
+            
+            
 
             Vista::render(
                 'vistas\Menus\V_Resultadosmtto.php',
-                array(
-                    'menus' => $menus,
-                    'permisosMenu' => $permisosMenu
-                )
+                array('menus' => $resultados)
+        
             );
         }
         

@@ -34,10 +34,7 @@ class M_Menus extends Modelo
     {
       $SQL = "SELECT * FROM menus WHERE 1=1 ORDER BY id_menu_padre ASC, posicion ASC";
 
-      $sqlPermisos = "SELECT P.id_Permiso, P.nombre, P.id_menu FROM permisos P INNER JOIN menus M ON P.id_menu = m.id_menu;";
-
-      $permisosMenu = $this->DAO->consultar($sqlPermisos);
-
+      
       $menus = $this->DAO->consultar($SQL);
 
       foreach ($menus as $menu) {
@@ -48,11 +45,8 @@ class M_Menus extends Modelo
         }
       }
 
-      $resultados = array(
-        'menus' => $menuBueno,
-        'permisosMenu' => $permisosMenu
-    );
-      return $resultados;
+
+      return $menuBueno;
     }
     public function buscarMenuporID($parameters = array())
     {
