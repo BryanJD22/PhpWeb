@@ -46,8 +46,6 @@ function generarHTML($menu, $nivel = 0)
 
 
 $menus = $datos['menus'];
-//$permisosMenus = $datos['permisosMenu'];
-
 
 
 
